@@ -1,0 +1,14 @@
+{
+  "name": "fargate-tutorial",
+  "version": "1.0.0",
+  "description": "Practicing to create an express application for fargate",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Fernando Pombeiro",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
