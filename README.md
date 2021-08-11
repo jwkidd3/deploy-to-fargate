@@ -7,7 +7,7 @@
 
 2. Create the docker image (and optionally tag it with the name data-api): `docker build -t fern-practice .` This will create the image that we're going to upload.
 
-3. Assuming that you have the AWS command line system installed (and have the profile set up for whichever account you want to use) we need to create the repository (the slash here is to create a repo above the basic level): `aws ecr create-repository --repository-name practice/practicefern --profile codices --region eu-west-1`
+3. Assuming that you have the AWS command line system installed (and have the profile set up for whichever account you want to use) we need to create the repository (the slash here is to create a repo above the basic level): `aws ecr create-repository --repository-name practice/<user id> --region <your region>`
 
 4. Now this should return a json object that looks like this:
 
@@ -25,13 +25,13 @@
 
 The important part here is the repositoryUri here because we're going to use that to deploy.
 
-5. Now we change the tag. We can look up the image ID by running docker images and looking for our image id there (kind of a pain) OR you can use the tag..but either way we want to change the tag on this image to match our repo- which it found in the repositoryUri above: `docker tag fern-practice 069818277826.dkr.ecr.eu-west-1.amazonaws.com/practice/practicefern`
+5. Now we change the tag. We can look up the image ID by running docker images and looking for our image id there (kind of a pain) OR you can use the tag..but either way we want to change the tag on this image to match our repo- which it found in the repositoryUri above: `docker tag fern-practice 069818277826.dkr.ecr.eu-west-1.amazonaws.com/practice/<user id>`
 
 6. Now we need to get logged in to allow us to deploy to the repository. This will require a long key that we will get from aws. To get that key we need to send a login command and then pipe it to our clipboard so (assuming that you are using a computer that has pbcopy): `aws ecr get-login --no-include-email --profile codices --region eu-west-1 | /bin/bash` 
 
 7. Now paste the previous command onto your command line with a ctrl-v. You should get back a "Login Succeeded". This keeps you logged in for the next 12 hours.
 
-8. Now that we're logged in let's push our image to the new uri: `docker push 069818277826.dkr.ecr.eu-west-1.amazonaws.com/practice/practicefern` This might take a while so go get a cup of coffee.
+8. Now that we're logged in let's push our image to the new uri: `docker push 069818277826.dkr.ecr.eu-west-1.amazonaws.com/practice/<user id>` This might take a while so go get a cup of coffee.
 
 9. Now that we're pushed go into the console and verify that your image made it to the repo (keep in mind that in the above link I'm set to eu-west-1. If you didn't push to that region then switch your region in the top right of the screen)
 
