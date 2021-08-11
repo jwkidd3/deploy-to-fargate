@@ -27,7 +27,7 @@ The important part here is the repositoryUri here because we're going to use tha
 
 5. Now we change the tag. We can look up the image ID by running docker images and looking for our image id there (kind of a pain) OR you can use the tag..but either way we want to change the tag on this image to match our repo- which it found in the repositoryUri above: `docker tag fern-practice 069818277826.dkr.ecr.eu-west-1.amazonaws.com/practice/<user id>`
 
-6. Now we need to get logged in to allow us to deploy to the repository. This will require a long key that we will get from aws. To get that key we need to send a login command and then pipe it to our clipboard so (assuming that you are using a computer that has pbcopy): `aws ecr get-login --no-include-email --profile codices --region eu-west-1 | /bin/bash` 
+6. Now we need to get logged in to allow us to deploy to the repository. This will require a long key that we will get from aws. To get that key we need to send a login command and then pipe it to our clipboard so (assuming that you are using a computer that has pbcopy): `aws ecr get-login --no-include-email --region eu-west-1 | /bin/bash` 
 
 7. Now paste the previous command onto your command line with a ctrl-v. You should get back a "Login Succeeded". This keeps you logged in for the next 12 hours.
 
